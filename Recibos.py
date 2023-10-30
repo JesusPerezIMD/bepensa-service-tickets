@@ -1,4 +1,3 @@
-
 def analizar_ticket(url):
 
     from azure.core.credentials import AzureKeyCredential
