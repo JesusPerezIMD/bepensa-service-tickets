@@ -54,13 +54,13 @@ def analizar_ticket(url):
                 )
             )
         if receipt.fields.get("Items"):
-            print("ArtÃ­culos:")
+            print("Artículos:")
             for idx, item in enumerate(receipt.fields.get("Items").value):
                 print("...ArtÃ­culo #{}".format(idx + 1))
                 item_description = item.value.get("Description")
                 if item_description:
                     print(
-                        "......DescripciÃ³n: {} con confianza: {}".format(
+                        "......Descripción: {} con confianza: {}".format(
                             item_description.value, item_description.confidence
                         )
                     )
