@@ -49,14 +49,14 @@ def analizar_ticket(url):
         transaction_date = receipt.fields.get("TransactionDate")
         if transaction_date:
             print(
-                "Fecha de emisiÃ³n del recibo: {} con confianza: {}".format(
+                "Fecha de emisión del recibo: {} con confianza: {}".format(
                     transaction_date.value, transaction_date.confidence
                 )
             )
         if receipt.fields.get("Items"):
             print("Artículos:")
             for idx, item in enumerate(receipt.fields.get("Items").value):
-                print("...ArtÃ­culo #{}".format(idx + 1))
+                print("...Artículo #{}".format(idx + 1))
                 item_description = item.value.get("Description")
                 if item_description:
                     print(
