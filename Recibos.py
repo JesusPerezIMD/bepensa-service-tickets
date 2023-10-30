@@ -1,28 +1,12 @@
-#The prebuilt-receipt model extracts key information from printed and handwritten sales receipts.
 
-#Tipos de recibo: https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-receipt?view=doc-intel-3.1.0#receipt
 def analizar_ticket(url):
-    """
-    This code sample shows Prebuilt Receipt operations with the Azure Form Recognizer client library. 
-    The async versions of the samples require Python 3.6 or later.
-
-    To learn more, please visit the documentation - Quickstart: Form Recognizer Python client library SDKs
-    https://docs.microsoft.com/en-us/azure/applied-ai-services/form-recognizer/quickstarts/try-v3-python-sdk
-    """
 
     from azure.core.credentials import AzureKeyCredential
     from azure.ai.formrecognizer import DocumentAnalysisClient
 
-    """
-    Remember to remove the key from your code when you're done, and never post it publicly. For production, use
-    secure methods to store and access your credentials. For more information, see 
-    https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp#environment-variables-and-application-configuration
-    """
     endpoint = "https://citcognitiveservicedev.cognitiveservices.azure.com"
     key = "586bf736a33a4b8b8795ddd9d4aeb2e7"
 
-    # imagen ejemplo : https://bepensacitdev.blob.core.windows.net/searchcontainerdev/20231017_115619 (2).jpg
-    #https://bepensacitdev.blob.core.windows.net/searchcontainerdev/20231018_171438.jpg
     url = url
 
     document_analysis_client = DocumentAnalysisClient(
@@ -33,7 +17,7 @@ def analizar_ticket(url):
     receipts = poller.result()
 
     for idx, receipt in enumerate(receipts.documents):
-        print("--------Reconociendo recibo #{}--------".format(idx + 1))
+        print("--------Reconociendo Recibo #{}--------".format(idx + 1))
         receipt_type = receipt.doc_type
         if receipt_type:
             print(
@@ -104,5 +88,7 @@ def analizar_ticket(url):
         print("--------------------------------------")
 
 if __name__ == "__main__":
-    url = str(input("Por favor ingresa la url de la imagen a analizar: "))
+    print(">BEPENSA-SERVICE-TICKETS<")
+    print("--------------------------------------")
+    url = str(input("+URL: "))
     analizar_ticket(url)
